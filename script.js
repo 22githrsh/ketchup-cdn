@@ -22,7 +22,7 @@
     } else if (videoUrl) {
       const video = document.createElement('video');
       video.src = videoUrl;
-      video.controls = true;
+     
       video.autoplay = true;  // Enable autoplay
       video.muted = true;  // Mute the video to allow autoplay in modern browsers
       video.loop = true;  // Optional: Loop the video for a better user experience
