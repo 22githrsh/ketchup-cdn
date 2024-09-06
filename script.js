@@ -24,7 +24,7 @@
       const video = document.createElement('video');
       video.src = videoUrl;
       video.autoplay = true; // Enable autoplay
-      video.muted = true; // Mute the video to allow autoplay in modern browsers
+      video.muted = true; // Mute the video to allow autoplay in modern browserss
       video.loop = true; // Optional: Loop the video for a better user experience
       video.className = 'kechup-card-video';
       card.appendChild(video);
