@@ -1,0 +1,22 @@
+/* kechup.css */
+.kechup-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 300px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .kechup-card-image,
+  .kechup-card-video {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .kechup-card-description,
+  .kechup-card-price {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
