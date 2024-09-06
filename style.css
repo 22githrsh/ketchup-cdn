@@ -14,7 +14,7 @@ body {
   border-radius: 12px; /* Rounded corners */
   padding: 16px;
   flex-shrink: 0;
-  max-width: 300px;
+  max-width: 200px;
   margin: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Softer shadow for a 3D effect */
   background-color: #fff; /* White background for the card */
