@@ -1,4 +1,4 @@
-// kechup.js
+                                                        
 
 (function (global) {
     function createCard(options) {
