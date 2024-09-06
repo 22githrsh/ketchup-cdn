@@ -24,7 +24,7 @@
       const video = document.createElement('video');
       video.src = videoUrl;
       video.autoplay = true; // Enable autoplay
-      video.muted = true; // Mute the video to allow autoplay in modern browserss
+      video.muted = true; // Mute the video to allow autoplay in modern browsers
       video.loop = true; // Optional: Loop the video for a better user experience
       video.className = 'kechup-card-video';
       card.appendChild(video);
@@ -56,23 +56,62 @@
       e.target.classList.remove('dragging');
     });
 
-    // Swipe vertically
-    let startY;
+    // Swipe horizontally (touch)
+    let startX;
+    let currentX = 0;
+    let isDragging = false;
+
     card.addEventListener('touchstart', (e) => {
-      startY = e.touches[0].clientY;
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      card.style.transition = 'none'; // Disable transition for smooth dragging
     });
 
     card.addEventListener('touchmove', (e) => {
-      const currentY = e.touches[0].clientY;
-      const diffY = currentY - startY;
+      if (!isDragging) return;
 
-      // Adjust the vertical position of the card
-      card.style.transform = `translateY(${diffY}px)`;
+      const currentTouchX = e.touches[0].clientX;
+      const diffX = currentTouchX - startX;
+      currentX = diffX;
+      card.style.transform = `translateX(${diffX}px)`; // Adjust the horizontal position of the card
     });
 
     card.addEventListener('touchend', () => {
-      // Reset the position after swipe
-      card.style.transform = 'translateY(0)';
+      isDragging = false;
+      card.style.transition = 'transform 0.3s ease'; // Re-enable transition for smooth snap-back
+      card.style.transform = 'translateX(0)'; // Reset the position after swipe
+    });
+
+    // Swipe horizontally (mouse)
+    let startMouseX;
+
+    card.addEventListener('mousedown', (e) => {
+      startMouseX = e.clientX;
+      isDragging = true;
+      card.style.transition = 'none';
+    });
+
+    card.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+
+      const currentMouseX = e.clientX;
+      const diffMouseX = currentMouseX - startMouseX;
+      currentX = diffMouseX;
+      card.style.transform = `translateX(${diffMouseX}px)`; // Adjust the horizontal position for mouse drag
+    });
+
+    card.addEventListener('mouseup', () => {
+      isDragging = false;
+      card.style.transition = 'transform 0.3s ease';
+      card.style.transform = 'translateX(0)'; // Reset the position after dragging
+    });
+
+    card.addEventListener('mouseleave', () => {
+      if (isDragging) {
+        isDragging = false;
+        card.style.transition = 'transform 0.3s ease';
+        card.style.transform = 'translateX(0)'; // Reset if the mouse leaves while dragging
+      }
     });
 
     // Append card to the specified container or body
